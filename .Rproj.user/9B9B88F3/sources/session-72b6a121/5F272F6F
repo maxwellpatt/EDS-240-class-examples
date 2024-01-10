@@ -5,7 +5,7 @@
     "type": "quarto_markdown",
     "hash": "0",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1704910663623.0,
     "source_on_save": false,
     "relative_order": 2,
@@ -18,15 +18,15 @@
         "cursorPosition": "6,0",
         "scrollLine": "0",
         "docOutlineVisible": "1",
-        "rmdVisualModeLocation": "534:1644",
+        "rmdVisualModeLocation": "3986:1501",
         "rmdVisualCollapsedChunks": ""
     },
     "folds": "",
-    "lastKnownWriteTime": 1704910779,
+    "lastKnownWriteTime": 1704911032,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1704910779918,
+    "last_content_update": 1704912242642,
     "read_only": false,
     "read_only_alternatives": []
 }
