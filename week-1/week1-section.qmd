@@ -32,16 +32,16 @@ fracking_clean <- fracking |>
   mutate(year = year(datetime_start)) |> # create 'year' col from date
 
   # select relevant cols ----
-  select(datetime_start, year, state_name, county_name, well_name, total_base_water_volume) |> 
+  select(datetime_start, year, state_name, county_name, well_name, total_base_water_volume) |> # remove unnecessary columns by filtering for columns of interest
   
   # filter out non-state names ----
-  filter(!state_name %in% c("Beaver", "Beckham", "Harper", "Hemphill", "Midland", "Red River", "Roosevelt", "Rusk", "State", "WARD")) |> 
+  filter(!state_name %in% c("Beaver", "Beckham", "Harper", "Hemphill", "Midland", "Red River", "Roosevelt", "Rusk", "State", "WARD")) |> # removing invalid state names
   
   # rename state_name to something shorter for typing out when using case_when (not necessary) ----
   rename(sn = state_name) |> 
   
   # make all words title case ----
-  mutate(sn = str_to_title(sn)) |> 
+  mutate(sn = str_to_title(sn)) |> # capitalize state nanes
   
   # fix misspelled state names ----
   mutate(sn = case_when(
@@ -82,7 +82,7 @@ fracking_clean <- fracking |>
   mutate(sn = str_to_title(sn)) |> 
   
   # create a column of just state abbreviations ----
-  mutate(state_abb = usdata::state2abbr(sn)) |> 
+  mutate(state_abb = usdata::state2abbr(sn)) |> # simplifies state references
   
   # rename 'sn' to 'state_name' again for clarity ----
   rename(state_name = sn, total_base_water_volume_gal = total_base_water_volume) |> 
@@ -95,7 +95,7 @@ fracking_clean <- fracking |>
          state_abb = as.factor(state_abb)) |> 
   
   # remove obs that don't have a measurement for 'total_base_water_volume' (NA) ----
-  drop_na(total_base_water_volume_gal)
+  drop_na(total_base_water_volume_gal) # filters out empty values 
 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##          some exploratory data viz + a few plot mods for practice        ----
