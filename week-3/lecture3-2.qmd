@@ -187,6 +187,26 @@ lyme_pop <- left_join(lyme_by_state, us_state_pop) |>
   mutate(cases_per100k = total_cases/pop100k) 
 ```
 
+## Line part
+
+```{r}
+# highlight 1 group
+plot1 = lyme_pop %>% 
+  filter(year %in% c(2010:2020)) %>% 
+  ggplot(aes(x = year, y = cases_per100k, group = state, color = state)) +
+  geom_line() +
+  gghighlight::gghighlight(state == "New Jersey")
+plot1
+
+# highlight based on a conditional
+lyme_pop %>% 
+  filter(year %in% c(2010:2020)) %>% 
+  ggplot(aes(x = year, y = cases_per100k, group = state, color = state)) +
+  geom_line() +
+  gghighlight::gghighlight(max(cases_per100k) > 100)
+View(lyme_pop)
+```
+
 
 
 
